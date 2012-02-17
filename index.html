@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd"
+    >
+<html lang="en">
+<head>
+    <title>moblie flash</title>
+    <style>
+        #background{
+            width:320px;
+            height:240px;
+            overflow:hidden;
+        }
+        #img1{
+            position:relative;
+            padding:0;
+            margin:0;
+        }
+    </style>
+    <script>
+        function _init(){
+            var width=3200/10-1,height=4800/20-1;
+            var background=document.getElementById("background");
+            var img1=document.getElementById("img1");
+            var _countX=1,_countY=1;
+            var timerX=setInterval(function(){
+                if(_countX==10){
+                    _countX=0;
+                    setTimeout(function(){
+                        img1.style.cssText="top:-"+(height*_countY)+"px;position:relative;";
+                        _countY++;
+                        if(_countY==20){
+                            clearInterval(timerX);
+                        }
+                    },60);
+                }else{
+                    img1.style.left=-(width*_countX)+"px";
+                    img1.style.position="relative";
+                    _countX++;
+                }
+            },60);
+        }
+    </script>
+</head>
+<body onload="_init();">
+    <div id="background">
+        <img id="img1" src="image/background.jpg" alt="img" />
+    </div>
+</body>
+</html>
